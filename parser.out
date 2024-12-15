@@ -1,0 +1,748 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> statement
+Rule 2     program -> program statement
+Rule 3     statement -> print_statement
+Rule 4     statement -> if_statement
+Rule 5     statement -> assignment_statement
+Rule 6     statement -> input_statement
+Rule 7     print_statement -> PRINT PAREN_OPEN expression_list PAREN_CLOSE
+Rule 8     expression_list -> expression
+Rule 9     expression_list -> expression_list COMMA expression
+Rule 10    expression -> INTEGER
+Rule 11    expression -> FLOAT
+Rule 12    expression -> IDENTIFIER
+Rule 13    expression -> STRING
+Rule 14    expression -> PAREN_OPEN expression PAREN_CLOSE
+Rule 15    expression -> expression OPERATOR expression
+Rule 16    expression -> expression RELATIONAL_OPERATOR expression
+Rule 17    if_statement -> IF expression COLON block ELSE COLON block
+Rule 18    block -> statement
+Rule 19    block -> block statement
+Rule 20    assignment_statement -> IDENTIFIER ASSIGN expression
+Rule 21    input_statement -> INPUT PAREN_OPEN expression PAREN_CLOSE
+
+Terminals, with rules where they appear
+
+ASSIGN               : 20
+COLON                : 17 17
+COMMA                : 9
+ELSE                 : 17
+FLOAT                : 11
+IDENTIFIER           : 12 20
+IF                   : 17
+INPUT                : 21
+INTEGER              : 10
+OPERATOR             : 15
+PAREN_CLOSE          : 7 14 21
+PAREN_OPEN           : 7 14 21
+PRINT                : 7
+RELATIONAL_OPERATOR  : 16
+STRING               : 13
+error                : 
+
+Nonterminals, with rules where they appear
+
+assignment_statement : 5
+block                : 17 17 19
+expression           : 8 9 14 15 15 16 16 17 20 21
+expression_list      : 7 9
+if_statement         : 4
+input_statement      : 6
+print_statement      : 3
+program              : 2 0
+statement            : 1 2 18 19
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . program
+    (1) program -> . statement
+    (2) program -> . program statement
+    (3) statement -> . print_statement
+    (4) statement -> . if_statement
+    (5) statement -> . assignment_statement
+    (6) statement -> . input_statement
+    (7) print_statement -> . PRINT PAREN_OPEN expression_list PAREN_CLOSE
+    (17) if_statement -> . IF expression COLON block ELSE COLON block
+    (20) assignment_statement -> . IDENTIFIER ASSIGN expression
+    (21) input_statement -> . INPUT PAREN_OPEN expression PAREN_CLOSE
+
+    PRINT           shift and go to state 7
+    IF              shift and go to state 8
+    IDENTIFIER      shift and go to state 9
+    INPUT           shift and go to state 10
+
+    program                        shift and go to state 1
+    statement                      shift and go to state 2
+    print_statement                shift and go to state 3
+    if_statement                   shift and go to state 4
+    assignment_statement           shift and go to state 5
+    input_statement                shift and go to state 6
+
+state 1
+
+    (0) S' -> program .
+    (2) program -> program . statement
+    (3) statement -> . print_statement
+    (4) statement -> . if_statement
+    (5) statement -> . assignment_statement
+    (6) statement -> . input_statement
+    (7) print_statement -> . PRINT PAREN_OPEN expression_list PAREN_CLOSE
+    (17) if_statement -> . IF expression COLON block ELSE COLON block
+    (20) assignment_statement -> . IDENTIFIER ASSIGN expression
+    (21) input_statement -> . INPUT PAREN_OPEN expression PAREN_CLOSE
+
+    PRINT           shift and go to state 7
+    IF              shift and go to state 8
+    IDENTIFIER      shift and go to state 9
+    INPUT           shift and go to state 10
+
+    statement                      shift and go to state 11
+    print_statement                shift and go to state 3
+    if_statement                   shift and go to state 4
+    assignment_statement           shift and go to state 5
+    input_statement                shift and go to state 6
+
+state 2
+
+    (1) program -> statement .
+
+    PRINT           reduce using rule 1 (program -> statement .)
+    IF              reduce using rule 1 (program -> statement .)
+    IDENTIFIER      reduce using rule 1 (program -> statement .)
+    INPUT           reduce using rule 1 (program -> statement .)
+    $end            reduce using rule 1 (program -> statement .)
+
+
+state 3
+
+    (3) statement -> print_statement .
+
+    PRINT           reduce using rule 3 (statement -> print_statement .)
+    IF              reduce using rule 3 (statement -> print_statement .)
+    IDENTIFIER      reduce using rule 3 (statement -> print_statement .)
+    INPUT           reduce using rule 3 (statement -> print_statement .)
+    $end            reduce using rule 3 (statement -> print_statement .)
+    ELSE            reduce using rule 3 (statement -> print_statement .)
+
+
+state 4
+
+    (4) statement -> if_statement .
+
+    PRINT           reduce using rule 4 (statement -> if_statement .)
+    IF              reduce using rule 4 (statement -> if_statement .)
+    IDENTIFIER      reduce using rule 4 (statement -> if_statement .)
+    INPUT           reduce using rule 4 (statement -> if_statement .)
+    $end            reduce using rule 4 (statement -> if_statement .)
+    ELSE            reduce using rule 4 (statement -> if_statement .)
+
+
+state 5
+
+    (5) statement -> assignment_statement .
+
+    PRINT           reduce using rule 5 (statement -> assignment_statement .)
+    IF              reduce using rule 5 (statement -> assignment_statement .)
+    IDENTIFIER      reduce using rule 5 (statement -> assignment_statement .)
+    INPUT           reduce using rule 5 (statement -> assignment_statement .)
+    $end            reduce using rule 5 (statement -> assignment_statement .)
+    ELSE            reduce using rule 5 (statement -> assignment_statement .)
+
+
+state 6
+
+    (6) statement -> input_statement .
+
+    PRINT           reduce using rule 6 (statement -> input_statement .)
+    IF              reduce using rule 6 (statement -> input_statement .)
+    IDENTIFIER      reduce using rule 6 (statement -> input_statement .)
+    INPUT           reduce using rule 6 (statement -> input_statement .)
+    $end            reduce using rule 6 (statement -> input_statement .)
+    ELSE            reduce using rule 6 (statement -> input_statement .)
+
+
+state 7
+
+    (7) print_statement -> PRINT . PAREN_OPEN expression_list PAREN_CLOSE
+
+    PAREN_OPEN      shift and go to state 12
+
+
+state 8
+
+    (17) if_statement -> IF . expression COLON block ELSE COLON block
+    (10) expression -> . INTEGER
+    (11) expression -> . FLOAT
+    (12) expression -> . IDENTIFIER
+    (13) expression -> . STRING
+    (14) expression -> . PAREN_OPEN expression PAREN_CLOSE
+    (15) expression -> . expression OPERATOR expression
+    (16) expression -> . expression RELATIONAL_OPERATOR expression
+
+    INTEGER         shift and go to state 14
+    FLOAT           shift and go to state 15
+    IDENTIFIER      shift and go to state 16
+    STRING          shift and go to state 17
+    PAREN_OPEN      shift and go to state 18
+
+    expression                     shift and go to state 13
+
+state 9
+
+    (20) assignment_statement -> IDENTIFIER . ASSIGN expression
+
+    ASSIGN          shift and go to state 19
+
+
+state 10
+
+    (21) input_statement -> INPUT . PAREN_OPEN expression PAREN_CLOSE
+
+    PAREN_OPEN      shift and go to state 20
+
+
+state 11
+
+    (2) program -> program statement .
+
+    PRINT           reduce using rule 2 (program -> program statement .)
+    IF              reduce using rule 2 (program -> program statement .)
+    IDENTIFIER      reduce using rule 2 (program -> program statement .)
+    INPUT           reduce using rule 2 (program -> program statement .)
+    $end            reduce using rule 2 (program -> program statement .)
+
+
+state 12
+
+    (7) print_statement -> PRINT PAREN_OPEN . expression_list PAREN_CLOSE
+    (8) expression_list -> . expression
+    (9) expression_list -> . expression_list COMMA expression
+    (10) expression -> . INTEGER
+    (11) expression -> . FLOAT
+    (12) expression -> . IDENTIFIER
+    (13) expression -> . STRING
+    (14) expression -> . PAREN_OPEN expression PAREN_CLOSE
+    (15) expression -> . expression OPERATOR expression
+    (16) expression -> . expression RELATIONAL_OPERATOR expression
+
+    INTEGER         shift and go to state 14
+    FLOAT           shift and go to state 15
+    IDENTIFIER      shift and go to state 16
+    STRING          shift and go to state 17
+    PAREN_OPEN      shift and go to state 18
+
+    expression_list                shift and go to state 21
+    expression                     shift and go to state 22
+
+state 13
+
+    (17) if_statement -> IF expression . COLON block ELSE COLON block
+    (15) expression -> expression . OPERATOR expression
+    (16) expression -> expression . RELATIONAL_OPERATOR expression
+
+    COLON           shift and go to state 23
+    OPERATOR        shift and go to state 24
+    RELATIONAL_OPERATOR shift and go to state 25
+
+
+state 14
+
+    (10) expression -> INTEGER .
+
+    COLON           reduce using rule 10 (expression -> INTEGER .)
+    OPERATOR        reduce using rule 10 (expression -> INTEGER .)
+    RELATIONAL_OPERATOR reduce using rule 10 (expression -> INTEGER .)
+    PAREN_CLOSE     reduce using rule 10 (expression -> INTEGER .)
+    COMMA           reduce using rule 10 (expression -> INTEGER .)
+    PRINT           reduce using rule 10 (expression -> INTEGER .)
+    IF              reduce using rule 10 (expression -> INTEGER .)
+    IDENTIFIER      reduce using rule 10 (expression -> INTEGER .)
+    INPUT           reduce using rule 10 (expression -> INTEGER .)
+    $end            reduce using rule 10 (expression -> INTEGER .)
+    ELSE            reduce using rule 10 (expression -> INTEGER .)
+
+
+state 15
+
+    (11) expression -> FLOAT .
+
+    COLON           reduce using rule 11 (expression -> FLOAT .)
+    OPERATOR        reduce using rule 11 (expression -> FLOAT .)
+    RELATIONAL_OPERATOR reduce using rule 11 (expression -> FLOAT .)
+    PAREN_CLOSE     reduce using rule 11 (expression -> FLOAT .)
+    COMMA           reduce using rule 11 (expression -> FLOAT .)
+    PRINT           reduce using rule 11 (expression -> FLOAT .)
+    IF              reduce using rule 11 (expression -> FLOAT .)
+    IDENTIFIER      reduce using rule 11 (expression -> FLOAT .)
+    INPUT           reduce using rule 11 (expression -> FLOAT .)
+    $end            reduce using rule 11 (expression -> FLOAT .)
+    ELSE            reduce using rule 11 (expression -> FLOAT .)
+
+
+state 16
+
+    (12) expression -> IDENTIFIER .
+
+    COLON           reduce using rule 12 (expression -> IDENTIFIER .)
+    OPERATOR        reduce using rule 12 (expression -> IDENTIFIER .)
+    RELATIONAL_OPERATOR reduce using rule 12 (expression -> IDENTIFIER .)
+    PAREN_CLOSE     reduce using rule 12 (expression -> IDENTIFIER .)
+    COMMA           reduce using rule 12 (expression -> IDENTIFIER .)
+    PRINT           reduce using rule 12 (expression -> IDENTIFIER .)
+    IF              reduce using rule 12 (expression -> IDENTIFIER .)
+    IDENTIFIER      reduce using rule 12 (expression -> IDENTIFIER .)
+    INPUT           reduce using rule 12 (expression -> IDENTIFIER .)
+    $end            reduce using rule 12 (expression -> IDENTIFIER .)
+    ELSE            reduce using rule 12 (expression -> IDENTIFIER .)
+
+
+state 17
+
+    (13) expression -> STRING .
+
+    COLON           reduce using rule 13 (expression -> STRING .)
+    OPERATOR        reduce using rule 13 (expression -> STRING .)
+    RELATIONAL_OPERATOR reduce using rule 13 (expression -> STRING .)
+    PAREN_CLOSE     reduce using rule 13 (expression -> STRING .)
+    COMMA           reduce using rule 13 (expression -> STRING .)
+    PRINT           reduce using rule 13 (expression -> STRING .)
+    IF              reduce using rule 13 (expression -> STRING .)
+    IDENTIFIER      reduce using rule 13 (expression -> STRING .)
+    INPUT           reduce using rule 13 (expression -> STRING .)
+    $end            reduce using rule 13 (expression -> STRING .)
+    ELSE            reduce using rule 13 (expression -> STRING .)
+
+
+state 18
+
+    (14) expression -> PAREN_OPEN . expression PAREN_CLOSE
+    (10) expression -> . INTEGER
+    (11) expression -> . FLOAT
+    (12) expression -> . IDENTIFIER
+    (13) expression -> . STRING
+    (14) expression -> . PAREN_OPEN expression PAREN_CLOSE
+    (15) expression -> . expression OPERATOR expression
+    (16) expression -> . expression RELATIONAL_OPERATOR expression
+
+    INTEGER         shift and go to state 14
+    FLOAT           shift and go to state 15
+    IDENTIFIER      shift and go to state 16
+    STRING          shift and go to state 17
+    PAREN_OPEN      shift and go to state 18
+
+    expression                     shift and go to state 26
+
+state 19
+
+    (20) assignment_statement -> IDENTIFIER ASSIGN . expression
+    (10) expression -> . INTEGER
+    (11) expression -> . FLOAT
+    (12) expression -> . IDENTIFIER
+    (13) expression -> . STRING
+    (14) expression -> . PAREN_OPEN expression PAREN_CLOSE
+    (15) expression -> . expression OPERATOR expression
+    (16) expression -> . expression RELATIONAL_OPERATOR expression
+
+    INTEGER         shift and go to state 14
+    FLOAT           shift and go to state 15
+    IDENTIFIER      shift and go to state 16
+    STRING          shift and go to state 17
+    PAREN_OPEN      shift and go to state 18
+
+    expression                     shift and go to state 27
+
+state 20
+
+    (21) input_statement -> INPUT PAREN_OPEN . expression PAREN_CLOSE
+    (10) expression -> . INTEGER
+    (11) expression -> . FLOAT
+    (12) expression -> . IDENTIFIER
+    (13) expression -> . STRING
+    (14) expression -> . PAREN_OPEN expression PAREN_CLOSE
+    (15) expression -> . expression OPERATOR expression
+    (16) expression -> . expression RELATIONAL_OPERATOR expression
+
+    INTEGER         shift and go to state 14
+    FLOAT           shift and go to state 15
+    IDENTIFIER      shift and go to state 16
+    STRING          shift and go to state 17
+    PAREN_OPEN      shift and go to state 18
+
+    expression                     shift and go to state 28
+
+state 21
+
+    (7) print_statement -> PRINT PAREN_OPEN expression_list . PAREN_CLOSE
+    (9) expression_list -> expression_list . COMMA expression
+
+    PAREN_CLOSE     shift and go to state 29
+    COMMA           shift and go to state 30
+
+
+state 22
+
+    (8) expression_list -> expression .
+    (15) expression -> expression . OPERATOR expression
+    (16) expression -> expression . RELATIONAL_OPERATOR expression
+
+    PAREN_CLOSE     reduce using rule 8 (expression_list -> expression .)
+    COMMA           reduce using rule 8 (expression_list -> expression .)
+    OPERATOR        shift and go to state 24
+    RELATIONAL_OPERATOR shift and go to state 25
+
+
+state 23
+
+    (17) if_statement -> IF expression COLON . block ELSE COLON block
+    (18) block -> . statement
+    (19) block -> . block statement
+    (3) statement -> . print_statement
+    (4) statement -> . if_statement
+    (5) statement -> . assignment_statement
+    (6) statement -> . input_statement
+    (7) print_statement -> . PRINT PAREN_OPEN expression_list PAREN_CLOSE
+    (17) if_statement -> . IF expression COLON block ELSE COLON block
+    (20) assignment_statement -> . IDENTIFIER ASSIGN expression
+    (21) input_statement -> . INPUT PAREN_OPEN expression PAREN_CLOSE
+
+    PRINT           shift and go to state 7
+    IF              shift and go to state 8
+    IDENTIFIER      shift and go to state 9
+    INPUT           shift and go to state 10
+
+    block                          shift and go to state 31
+    statement                      shift and go to state 32
+    print_statement                shift and go to state 3
+    if_statement                   shift and go to state 4
+    assignment_statement           shift and go to state 5
+    input_statement                shift and go to state 6
+
+state 24
+
+    (15) expression -> expression OPERATOR . expression
+    (10) expression -> . INTEGER
+    (11) expression -> . FLOAT
+    (12) expression -> . IDENTIFIER
+    (13) expression -> . STRING
+    (14) expression -> . PAREN_OPEN expression PAREN_CLOSE
+    (15) expression -> . expression OPERATOR expression
+    (16) expression -> . expression RELATIONAL_OPERATOR expression
+
+    INTEGER         shift and go to state 14
+    FLOAT           shift and go to state 15
+    IDENTIFIER      shift and go to state 16
+    STRING          shift and go to state 17
+    PAREN_OPEN      shift and go to state 18
+
+    expression                     shift and go to state 33
+
+state 25
+
+    (16) expression -> expression RELATIONAL_OPERATOR . expression
+    (10) expression -> . INTEGER
+    (11) expression -> . FLOAT
+    (12) expression -> . IDENTIFIER
+    (13) expression -> . STRING
+    (14) expression -> . PAREN_OPEN expression PAREN_CLOSE
+    (15) expression -> . expression OPERATOR expression
+    (16) expression -> . expression RELATIONAL_OPERATOR expression
+
+    INTEGER         shift and go to state 14
+    FLOAT           shift and go to state 15
+    IDENTIFIER      shift and go to state 16
+    STRING          shift and go to state 17
+    PAREN_OPEN      shift and go to state 18
+
+    expression                     shift and go to state 34
+
+state 26
+
+    (14) expression -> PAREN_OPEN expression . PAREN_CLOSE
+    (15) expression -> expression . OPERATOR expression
+    (16) expression -> expression . RELATIONAL_OPERATOR expression
+
+    PAREN_CLOSE     shift and go to state 35
+    OPERATOR        shift and go to state 24
+    RELATIONAL_OPERATOR shift and go to state 25
+
+
+state 27
+
+    (20) assignment_statement -> IDENTIFIER ASSIGN expression .
+    (15) expression -> expression . OPERATOR expression
+    (16) expression -> expression . RELATIONAL_OPERATOR expression
+
+    PRINT           reduce using rule 20 (assignment_statement -> IDENTIFIER ASSIGN expression .)
+    IF              reduce using rule 20 (assignment_statement -> IDENTIFIER ASSIGN expression .)
+    IDENTIFIER      reduce using rule 20 (assignment_statement -> IDENTIFIER ASSIGN expression .)
+    INPUT           reduce using rule 20 (assignment_statement -> IDENTIFIER ASSIGN expression .)
+    $end            reduce using rule 20 (assignment_statement -> IDENTIFIER ASSIGN expression .)
+    ELSE            reduce using rule 20 (assignment_statement -> IDENTIFIER ASSIGN expression .)
+    OPERATOR        shift and go to state 24
+    RELATIONAL_OPERATOR shift and go to state 25
+
+
+state 28
+
+    (21) input_statement -> INPUT PAREN_OPEN expression . PAREN_CLOSE
+    (15) expression -> expression . OPERATOR expression
+    (16) expression -> expression . RELATIONAL_OPERATOR expression
+
+    PAREN_CLOSE     shift and go to state 36
+    OPERATOR        shift and go to state 24
+    RELATIONAL_OPERATOR shift and go to state 25
+
+
+state 29
+
+    (7) print_statement -> PRINT PAREN_OPEN expression_list PAREN_CLOSE .
+
+    PRINT           reduce using rule 7 (print_statement -> PRINT PAREN_OPEN expression_list PAREN_CLOSE .)
+    IF              reduce using rule 7 (print_statement -> PRINT PAREN_OPEN expression_list PAREN_CLOSE .)
+    IDENTIFIER      reduce using rule 7 (print_statement -> PRINT PAREN_OPEN expression_list PAREN_CLOSE .)
+    INPUT           reduce using rule 7 (print_statement -> PRINT PAREN_OPEN expression_list PAREN_CLOSE .)
+    $end            reduce using rule 7 (print_statement -> PRINT PAREN_OPEN expression_list PAREN_CLOSE .)
+    ELSE            reduce using rule 7 (print_statement -> PRINT PAREN_OPEN expression_list PAREN_CLOSE .)
+
+
+state 30
+
+    (9) expression_list -> expression_list COMMA . expression
+    (10) expression -> . INTEGER
+    (11) expression -> . FLOAT
+    (12) expression -> . IDENTIFIER
+    (13) expression -> . STRING
+    (14) expression -> . PAREN_OPEN expression PAREN_CLOSE
+    (15) expression -> . expression OPERATOR expression
+    (16) expression -> . expression RELATIONAL_OPERATOR expression
+
+    INTEGER         shift and go to state 14
+    FLOAT           shift and go to state 15
+    IDENTIFIER      shift and go to state 16
+    STRING          shift and go to state 17
+    PAREN_OPEN      shift and go to state 18
+
+    expression                     shift and go to state 37
+
+state 31
+
+    (17) if_statement -> IF expression COLON block . ELSE COLON block
+    (19) block -> block . statement
+    (3) statement -> . print_statement
+    (4) statement -> . if_statement
+    (5) statement -> . assignment_statement
+    (6) statement -> . input_statement
+    (7) print_statement -> . PRINT PAREN_OPEN expression_list PAREN_CLOSE
+    (17) if_statement -> . IF expression COLON block ELSE COLON block
+    (20) assignment_statement -> . IDENTIFIER ASSIGN expression
+    (21) input_statement -> . INPUT PAREN_OPEN expression PAREN_CLOSE
+
+    ELSE            shift and go to state 38
+    PRINT           shift and go to state 7
+    IF              shift and go to state 8
+    IDENTIFIER      shift and go to state 9
+    INPUT           shift and go to state 10
+
+    statement                      shift and go to state 39
+    print_statement                shift and go to state 3
+    if_statement                   shift and go to state 4
+    assignment_statement           shift and go to state 5
+    input_statement                shift and go to state 6
+
+state 32
+
+    (18) block -> statement .
+
+    ELSE            reduce using rule 18 (block -> statement .)
+    PRINT           reduce using rule 18 (block -> statement .)
+    IF              reduce using rule 18 (block -> statement .)
+    IDENTIFIER      reduce using rule 18 (block -> statement .)
+    INPUT           reduce using rule 18 (block -> statement .)
+    $end            reduce using rule 18 (block -> statement .)
+
+
+state 33
+
+    (15) expression -> expression OPERATOR expression .
+    (15) expression -> expression . OPERATOR expression
+    (16) expression -> expression . RELATIONAL_OPERATOR expression
+
+  ! shift/reduce conflict for OPERATOR resolved as shift
+  ! shift/reduce conflict for RELATIONAL_OPERATOR resolved as shift
+    COLON           reduce using rule 15 (expression -> expression OPERATOR expression .)
+    PAREN_CLOSE     reduce using rule 15 (expression -> expression OPERATOR expression .)
+    COMMA           reduce using rule 15 (expression -> expression OPERATOR expression .)
+    PRINT           reduce using rule 15 (expression -> expression OPERATOR expression .)
+    IF              reduce using rule 15 (expression -> expression OPERATOR expression .)
+    IDENTIFIER      reduce using rule 15 (expression -> expression OPERATOR expression .)
+    INPUT           reduce using rule 15 (expression -> expression OPERATOR expression .)
+    $end            reduce using rule 15 (expression -> expression OPERATOR expression .)
+    ELSE            reduce using rule 15 (expression -> expression OPERATOR expression .)
+    OPERATOR        shift and go to state 24
+    RELATIONAL_OPERATOR shift and go to state 25
+
+  ! OPERATOR        [ reduce using rule 15 (expression -> expression OPERATOR expression .) ]
+  ! RELATIONAL_OPERATOR [ reduce using rule 15 (expression -> expression OPERATOR expression .) ]
+
+
+state 34
+
+    (16) expression -> expression RELATIONAL_OPERATOR expression .
+    (15) expression -> expression . OPERATOR expression
+    (16) expression -> expression . RELATIONAL_OPERATOR expression
+
+  ! shift/reduce conflict for OPERATOR resolved as shift
+  ! shift/reduce conflict for RELATIONAL_OPERATOR resolved as shift
+    COLON           reduce using rule 16 (expression -> expression RELATIONAL_OPERATOR expression .)
+    PAREN_CLOSE     reduce using rule 16 (expression -> expression RELATIONAL_OPERATOR expression .)
+    COMMA           reduce using rule 16 (expression -> expression RELATIONAL_OPERATOR expression .)
+    PRINT           reduce using rule 16 (expression -> expression RELATIONAL_OPERATOR expression .)
+    IF              reduce using rule 16 (expression -> expression RELATIONAL_OPERATOR expression .)
+    IDENTIFIER      reduce using rule 16 (expression -> expression RELATIONAL_OPERATOR expression .)
+    INPUT           reduce using rule 16 (expression -> expression RELATIONAL_OPERATOR expression .)
+    $end            reduce using rule 16 (expression -> expression RELATIONAL_OPERATOR expression .)
+    ELSE            reduce using rule 16 (expression -> expression RELATIONAL_OPERATOR expression .)
+    OPERATOR        shift and go to state 24
+    RELATIONAL_OPERATOR shift and go to state 25
+
+  ! OPERATOR        [ reduce using rule 16 (expression -> expression RELATIONAL_OPERATOR expression .) ]
+  ! RELATIONAL_OPERATOR [ reduce using rule 16 (expression -> expression RELATIONAL_OPERATOR expression .) ]
+
+
+state 35
+
+    (14) expression -> PAREN_OPEN expression PAREN_CLOSE .
+
+    COLON           reduce using rule 14 (expression -> PAREN_OPEN expression PAREN_CLOSE .)
+    OPERATOR        reduce using rule 14 (expression -> PAREN_OPEN expression PAREN_CLOSE .)
+    RELATIONAL_OPERATOR reduce using rule 14 (expression -> PAREN_OPEN expression PAREN_CLOSE .)
+    PAREN_CLOSE     reduce using rule 14 (expression -> PAREN_OPEN expression PAREN_CLOSE .)
+    COMMA           reduce using rule 14 (expression -> PAREN_OPEN expression PAREN_CLOSE .)
+    PRINT           reduce using rule 14 (expression -> PAREN_OPEN expression PAREN_CLOSE .)
+    IF              reduce using rule 14 (expression -> PAREN_OPEN expression PAREN_CLOSE .)
+    IDENTIFIER      reduce using rule 14 (expression -> PAREN_OPEN expression PAREN_CLOSE .)
+    INPUT           reduce using rule 14 (expression -> PAREN_OPEN expression PAREN_CLOSE .)
+    $end            reduce using rule 14 (expression -> PAREN_OPEN expression PAREN_CLOSE .)
+    ELSE            reduce using rule 14 (expression -> PAREN_OPEN expression PAREN_CLOSE .)
+
+
+state 36
+
+    (21) input_statement -> INPUT PAREN_OPEN expression PAREN_CLOSE .
+
+    PRINT           reduce using rule 21 (input_statement -> INPUT PAREN_OPEN expression PAREN_CLOSE .)
+    IF              reduce using rule 21 (input_statement -> INPUT PAREN_OPEN expression PAREN_CLOSE .)
+    IDENTIFIER      reduce using rule 21 (input_statement -> INPUT PAREN_OPEN expression PAREN_CLOSE .)
+    INPUT           reduce using rule 21 (input_statement -> INPUT PAREN_OPEN expression PAREN_CLOSE .)
+    $end            reduce using rule 21 (input_statement -> INPUT PAREN_OPEN expression PAREN_CLOSE .)
+    ELSE            reduce using rule 21 (input_statement -> INPUT PAREN_OPEN expression PAREN_CLOSE .)
+
+
+state 37
+
+    (9) expression_list -> expression_list COMMA expression .
+    (15) expression -> expression . OPERATOR expression
+    (16) expression -> expression . RELATIONAL_OPERATOR expression
+
+    PAREN_CLOSE     reduce using rule 9 (expression_list -> expression_list COMMA expression .)
+    COMMA           reduce using rule 9 (expression_list -> expression_list COMMA expression .)
+    OPERATOR        shift and go to state 24
+    RELATIONAL_OPERATOR shift and go to state 25
+
+
+state 38
+
+    (17) if_statement -> IF expression COLON block ELSE . COLON block
+
+    COLON           shift and go to state 40
+
+
+state 39
+
+    (19) block -> block statement .
+
+    ELSE            reduce using rule 19 (block -> block statement .)
+    PRINT           reduce using rule 19 (block -> block statement .)
+    IF              reduce using rule 19 (block -> block statement .)
+    IDENTIFIER      reduce using rule 19 (block -> block statement .)
+    INPUT           reduce using rule 19 (block -> block statement .)
+    $end            reduce using rule 19 (block -> block statement .)
+
+
+state 40
+
+    (17) if_statement -> IF expression COLON block ELSE COLON . block
+    (18) block -> . statement
+    (19) block -> . block statement
+    (3) statement -> . print_statement
+    (4) statement -> . if_statement
+    (5) statement -> . assignment_statement
+    (6) statement -> . input_statement
+    (7) print_statement -> . PRINT PAREN_OPEN expression_list PAREN_CLOSE
+    (17) if_statement -> . IF expression COLON block ELSE COLON block
+    (20) assignment_statement -> . IDENTIFIER ASSIGN expression
+    (21) input_statement -> . INPUT PAREN_OPEN expression PAREN_CLOSE
+
+    PRINT           shift and go to state 7
+    IF              shift and go to state 8
+    IDENTIFIER      shift and go to state 9
+    INPUT           shift and go to state 10
+
+    block                          shift and go to state 41
+    statement                      shift and go to state 32
+    print_statement                shift and go to state 3
+    if_statement                   shift and go to state 4
+    assignment_statement           shift and go to state 5
+    input_statement                shift and go to state 6
+
+state 41
+
+    (17) if_statement -> IF expression COLON block ELSE COLON block .
+    (19) block -> block . statement
+    (3) statement -> . print_statement
+    (4) statement -> . if_statement
+    (5) statement -> . assignment_statement
+    (6) statement -> . input_statement
+    (7) print_statement -> . PRINT PAREN_OPEN expression_list PAREN_CLOSE
+    (17) if_statement -> . IF expression COLON block ELSE COLON block
+    (20) assignment_statement -> . IDENTIFIER ASSIGN expression
+    (21) input_statement -> . INPUT PAREN_OPEN expression PAREN_CLOSE
+
+  ! shift/reduce conflict for PRINT resolved as shift
+  ! shift/reduce conflict for IF resolved as shift
+  ! shift/reduce conflict for IDENTIFIER resolved as shift
+  ! shift/reduce conflict for INPUT resolved as shift
+    $end            reduce using rule 17 (if_statement -> IF expression COLON block ELSE COLON block .)
+    ELSE            reduce using rule 17 (if_statement -> IF expression COLON block ELSE COLON block .)
+    PRINT           shift and go to state 7
+    IF              shift and go to state 8
+    IDENTIFIER      shift and go to state 9
+    INPUT           shift and go to state 10
+
+  ! PRINT           [ reduce using rule 17 (if_statement -> IF expression COLON block ELSE COLON block .) ]
+  ! IF              [ reduce using rule 17 (if_statement -> IF expression COLON block ELSE COLON block .) ]
+  ! IDENTIFIER      [ reduce using rule 17 (if_statement -> IF expression COLON block ELSE COLON block .) ]
+  ! INPUT           [ reduce using rule 17 (if_statement -> IF expression COLON block ELSE COLON block .) ]
+
+    statement                      shift and go to state 39
+    print_statement                shift and go to state 3
+    if_statement                   shift and go to state 4
+    assignment_statement           shift and go to state 5
+    input_statement                shift and go to state 6
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for OPERATOR in state 33 resolved as shift
+WARNING: shift/reduce conflict for RELATIONAL_OPERATOR in state 33 resolved as shift
+WARNING: shift/reduce conflict for OPERATOR in state 34 resolved as shift
+WARNING: shift/reduce conflict for RELATIONAL_OPERATOR in state 34 resolved as shift
+WARNING: shift/reduce conflict for PRINT in state 41 resolved as shift
+WARNING: shift/reduce conflict for IF in state 41 resolved as shift
+WARNING: shift/reduce conflict for IDENTIFIER in state 41 resolved as shift
+WARNING: shift/reduce conflict for INPUT in state 41 resolved as shift

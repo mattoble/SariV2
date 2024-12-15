@@ -1,0 +1,5 @@
+ilabas("Hello, world")
+ilabas("   ")
+
+mensahe = "Magandang araw!"
+ilabas(mensahe)
